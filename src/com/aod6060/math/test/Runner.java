@@ -86,7 +86,7 @@ public class Runner {
 		c = LinearMath.mul(a, b);
 		System.out.print(c);
 		System.out.println("Testing Matrix Multiplication with Identity Matrix");
-		c = LinearMath.mul(a, Mat3f.identity());
+		c = LinearMath.mul(a, Mat4f.identity());
 		System.out.println(c);
 		// c = transpose(a)
 		System.out.println("Testing Transpose");
@@ -106,7 +106,7 @@ public class Runner {
 		System.out.print(c);
 		// Testing Inverse out
 		System.out.println("Inverse Check");
-		c = LinearMath.mul(a, c);
+		c = LinearMath.mul(c, a);
 		System.out.print(c);
 	}
 

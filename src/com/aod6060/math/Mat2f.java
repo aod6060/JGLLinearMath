@@ -8,22 +8,42 @@ import java.util.Random;
  *
  */
 public class Mat2f {
+	// The size of the square matrix
 	public static final int SIZE = 2;
 	
 	private float[] m;
 	
+	/**
+	 * This is private because I want user to use the other
+	 * matrix creation methods.
+	 */
 	private Mat2f() {
 		m = new float[Mat2f.SIZE * Mat2f.SIZE];
 	}
-	
+	/**
+	 * This sets a value of a given 2x2 Matrix given 
+	 * the column and row
+	 * @param int c
+	 * @param int r
+	 * @param float value
+	 */
 	public void set(int c, int r, float value) {
 		m[r * Mat2f.SIZE + c] = value;
 	}
-	
+	/**
+	 * This returns a value of a given 2x2 Matrix given 
+	 * the column and row
+	 * @param int c
+	 * @param int r
+	 * @return float
+	 */
 	public float get(int c, int r) {
 		return m[r * Mat2f.SIZE + c];
 	}
-	
+	/**
+	 * This creates a 2x2 Zero Matrix
+	 * @return Mat2f
+	 */
 	public static Mat2f zero() {
 		Mat2f temp = new Mat2f();
 		
@@ -34,7 +54,10 @@ public class Mat2f {
 		
 		return temp;
 	}
-
+	/**
+	 * This creates a 2x2 Identity Matrix
+	 * @return Mat2f
+	 */
 	public static Mat2f identity() {
 		Mat2f temp = new Mat2f();
 		
@@ -45,7 +68,11 @@ public class Mat2f {
 		
 		return temp;
 	}
-
+	/**
+	 * This creates a 2x2 Random Matrix
+	 * @param int i
+	 * @return Mat2f
+	 */
 	public static Mat2f random(int i) {
 		Mat2f temp = new Mat2f();
 		Random rand = new Random();
@@ -57,8 +84,19 @@ public class Mat2f {
 		
 		return temp;
 	}
-
-	public static Mat2f create(float m00, float m10, float m01, float m11) {
+	/**
+	 * This creates a 2x2 Matrix from 
+	 * given set of values.
+	 * @param float m00
+	 * @param float m10
+	 * @param float m01
+	 * @param float m11
+	 * @return
+	 */
+	public static Mat2f create(
+			float m00, float m10, 
+			float m01, float m11) {
+		
 		Mat2f temp = new Mat2f();
 		
 		temp.set(0, 0, m00);
