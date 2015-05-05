@@ -1,6 +1,9 @@
 package com.aod6060.math;
 
+import java.nio.FloatBuffer;
 import java.util.Random;
+
+import org.lwjgl.BufferUtils;
 
 /**
  * This class represents a 4x4 matrix
@@ -195,5 +198,15 @@ public class Mat4f {
 		return str;
 	}
 	
+	/**
+	 * This returns a floatbuffer for Mat4f
+	 * @return FloatBuffer
+	 */
+	public FloatBuffer toBuffer() {
+		FloatBuffer temp = BufferUtils.createFloatBuffer(Mat4f.SIZE * Mat4f.SIZE);
+		temp.put(m);
+		temp.rewind();
+		return temp;
+	}
 	
 }

@@ -4,6 +4,8 @@ import com.aod6060.math.LinearMath;
 import com.aod6060.math.Mat2f;
 import com.aod6060.math.Mat3f;
 import com.aod6060.math.Mat4f;
+import com.aod6060.math.Transforms;
+import com.aod6060.math.Util;
 import com.aod6060.math.Vec2f;
 import com.aod6060.math.Vec3f;
 import com.aod6060.math.Vec4f;
@@ -50,9 +52,63 @@ public class Runner {
 		 */
 		System.out.println("Testing Mat4f");
 		runMat4fTests();
+		/*
+		 * Test Transformations
+		 */
+		System.out.println("Testing Transformations");
+		runTranTests();
 	}
 
 	
+	private static void runTranTests() {
+		// TODO Auto-generated method stub
+		Mat4f temp;
+		System.out.println("Model View Transformations");
+		System.out.println("---------------------------------------");
+		System.out.println("Testing traslate 1");
+		temp = Transforms.translate(0.0f, 0.0f, -5.0f);
+		System.out.println(temp);
+		System.out.println("Testing traslate 2");
+		temp = Transforms.translate(new Vec3f(0.0f, 0.0f, -5.0f));
+		System.out.println(temp);
+		System.out.println("Testing scale 1");
+		temp = Transforms.scale(2.0f, 2.0f, 2.0f);
+		System.out.println(temp);
+		System.out.println("Testing scale 2");
+		temp = Transforms.scale(new Vec3f(2.0f, 2.0f, 2.0f));
+		System.out.println(temp);
+		System.out.println("Testing rotate");
+		temp = Transforms.rotate(Util.toRadian(45.0f), 1.0f, 1.0f, 1.0f);
+		System.out.println(temp);
+		System.out.println("Test Combination");
+		System.out.println();
+		Mat4f t = Transforms.translate(0.0f, 0.0f, -5.0f);
+		Mat4f r = Transforms.rotate(Util.toRadian(45.0f), 0.0f, 1.0f, 1.0f);
+		Mat4f s = Transforms.scale(0.5f, 0.5f, 0.5f);
+		temp = LinearMath.mul(s, LinearMath.mul(r, t));
+		System.out.println(temp);
+		
+		// TODO Auto-generated method stub
+		System.out.println("Projection Transformations");
+		System.out.println("---------------------------------------");
+		System.out.println("Testing ortho 1");
+		temp = Transforms.ortho(-1.0f, 1.0f, -1.0f, 1.0f, -1000.0f, 1000.0f);
+		System.out.println(temp);
+		System.out.println("Testing ortho 2");
+		temp = Transforms.ortho(-1.0f, 1.0f, -1.0f, 1.0f);
+		System.out.println(temp);
+		System.out.println("Testing fustrum");
+		temp = Transforms.fustrum(-1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 1024.0f);
+		System.out.println(temp);
+		temp = Transforms.ortho(0.0f, 800.0f, 600.0f, 0.0f);
+		System.out.println(temp);
+		
+		System.out.println("Testing perspective");
+		temp = Transforms.perspective(45.0f, 800.0f / 600.0f, 1.0f, 1024.0f);
+		System.out.println(temp);
+	}
+
+
 	private static void runMat4fTests() {
 		// TODO Auto-generated method stub
 		Mat4f a = Mat4f.random(32);
