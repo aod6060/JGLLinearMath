@@ -92,16 +92,20 @@ public final class Transforms {
 	 * @param float z
 	 * @return
 	 */
-	public static Mat4f rotate(float angle, float x, float y, float z) {
+	public static Mat4f rotate(float angle, float _x, float _y, float _z) {
 		// This is one complicated function
 		Mat4f temp = Mat4f.identity();
-		Vec3f v = new Vec3f(x, y, z);
+		Vec3f v = new Vec3f(_x, _y, _z);
 		float c = (float) Math.cos(angle);
 		float s = (float) Math.sin(angle);
 		
 		if(LinearMath.length(v) != 1.0f) {
 			v = LinearMath.unit(v);
 		}
+		
+		float x = v.getX();
+		float y = v.getY();
+		float z = v.getZ();
 		
 		temp.set(0, 0, x*x*(1-c)+c);
 		
